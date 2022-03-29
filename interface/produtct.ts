@@ -1,4 +1,4 @@
-interface Product {
+interface IProduct {
     id: number;
     name: string;
     imageURL: string;

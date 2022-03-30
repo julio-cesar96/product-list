@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Image , Text, Center, Flex, HStack, Button, IconButton, Heading } from '@chakra-ui/react'
+import { Image , Text, Center, Flex, HStack, Button, IconButton, Heading } from '@chakra-ui/react'
 import { IProduct } from '../../interface/product'
 import { StarIcon } from '@chakra-ui/icons';
 

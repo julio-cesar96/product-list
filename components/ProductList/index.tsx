@@ -3,6 +3,16 @@ import { Center, Grid, GridItem } from '@chakra-ui/react'
 import { ProductCard } from '../ProductCard'
 import { productList } from '../../data/productList.json'
 
+const favoriteKey = 'favorite_products';
+
+const FavProduct = (id: number) => {
+    const favoriteProduct = productList.filter(
+       (product) => product.id === id
+    ); 
+    const FavoriteProductList = localStorage.getItem(favoriteKey);
+}
+
+
 
 
 export const ProductList = () => {

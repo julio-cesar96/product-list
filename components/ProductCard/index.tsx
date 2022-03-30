@@ -1,61 +1,47 @@
 import React from 'react'
-import { Box, Badge } from '@chakra-ui/react'
+import { Box, Image , Text, Center, Flex, HStack, Button, IconButton, Heading } from '@chakra-ui/react'
+import { IProduct } from '../../interface/product'
+import { StarIcon } from '@chakra-ui/icons';
 
-export const ProductCard = () => {
+type ProductCardProps = {
+    product: IProduct;
+}
+
+export const ProductCard = ( { product } : ProductCardProps )  => {
+    
     return (
-        <>
-            <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-            <Image src={property.imageUrl} alt={property.imageAlt} />
+        <Center maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' bgColor="white" px={2} py={4} flexDirection="column">
+            <Center overflow='hidden' maxHeight={40}>
+                <Image src={product.imageURL} alt={product.imageAlt} maxHeight={40}/>
+            </Center>
 
-            <Box p='6'>
-                <Box display='flex' alignItems='baseline'>
-                <Badge borderRadius='full' px='2' colorScheme='teal'>
-                    New
-                </Badge>
-                <Box
-                    color='gray.500'
+            
+                <Heading
+                    mt='1'
                     fontWeight='semibold'
-                    letterSpacing='wide'
-                    fontSize='xs'
-                    textTransform='uppercase'
-                    ml='2'
+                    as='h4'
+                    lineHeight='tight'
+                    isTruncated
+                    fontSize="md"
                 >
-                    {property.beds} beds &bull; {property.baths} baths
-                </Box>
-            </Box>
+                    {product.name}
+                </Heading>
 
-            <Box
-                mt='1'
-                fontWeight='semibold'
-                as='h4'
-                lineHeight='tight'
-                isTruncated
-            >
-                {property.title}
-            </Box>
+                
+                <HStack width="full">
+                    <Text color='red.600' fontSize='lg' as='s' fontWeight='semibold'>
+                    R$ {product.listPrice}
+                    </Text>
 
-            <Box>
-                {property.formattedPrice}
-                <Box as='span' color='gray.600' fontSize='sm'>
-                    / wk
-                </Box>
-            </Box>
+                    <Text color='green.500' fontSize='lg' fontWeight='bold'>
+                    R$ {product.salesPrice}
+                    </Text>
+                </HStack>
 
-            <Box display='flex' mt='2' alignItems='center'>
-                {Array(5)
-                    .fill('')
-                    .map((_, i) => (
-                    <StarIcon
-                        key={i}
-                        color={i < property.rating ? 'teal.500' : 'gray.300'}
-                    />
-                ))}
-                <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-                    {property.reviewCount} reviews
-                </Box>
-            </Box>
-        </Box>
-        </Box>   
-        </>
+                <Flex py={2} justifyContent='space-between' width="full" >
+                    <Button colorScheme="green"> Comprar </Button>
+                    <IconButton icon={<StarIcon />} aria-label='Favoritar' />
+                </Flex>
+            </Center>
     )
 }

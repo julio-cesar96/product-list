@@ -1,21 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Center, Grid, GridItem } from '@chakra-ui/react'
 import { ProductCard } from '../ProductCard'
 import { productList } from '../../data/productList.json'
 
-const favoriteKey = 'favorite_products';
-
-const FavProduct = (id: number) => {
-    const favoriteProduct = productList.filter(
-       (product) => product.id === id
-    ); 
-    const FavoriteProductList = localStorage.getItem(favoriteKey);
-}
-
-
-
 
 export const ProductList = () => {
+
+    const [product, setProduct] = useState([]);
+
+    const FavProduct = (id: number) => {
+        const favoriteProduct = productList.map(
+            favProduct => {
+                return favProduct.id ? { ...favProduct, favorite: !favProduct.favorite} : favProduct 
+            });
+            
+        }  
+
     return (
         <>
             <Center p={6} mt={2}>
